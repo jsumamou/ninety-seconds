@@ -26,3 +26,14 @@ tmp-*
 scripts/pregen/
 dev/out/
 dev/tmp/
+
+# 内部资料：提示词、草稿、投稿材料、开发脚本（只在本地，不进公开仓库）
+_private/
+PROMPTS*.md
+claude提示词*.md
+DIAGNOSIS.md
+NEXT-STEPS.md
+交接说明.md
+论坛帖_*.md
+投稿截图/
+dev/
