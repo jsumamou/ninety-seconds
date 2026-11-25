@@ -25,3 +25,4 @@ Thumbs.db
 tmp-*
 scripts/pregen/
 dev/out/
+dev/tmp/
