@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+*.tsbuildinfo
+
+# env / secrets
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Qoder 平台元数据（含项目/部署 ID，不入库）
+.九十秒.qoder.site
+.qoder-sites/
+.qoder-sites.json
+
+# 本地中间产物
+tmp-*
+scripts/pregen/
+dev/out/

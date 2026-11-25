@@ -1,0 +1,230 @@
+[
+  {
+    "paperId": "1706.03762",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "rate": "-25%",
+    "scenes": [
+      {
+        "dur": 14000,
+        "src": "audio/1706.03762/scene-0.mp3"
+      },
+      {
+        "dur": 14000,
+        "src": "audio/1706.03762/scene-1.mp3"
+      },
+      {
+        "dur": 16000,
+        "src": "audio/1706.03762/scene-2.mp3"
+      },
+      {
+        "dur": 18000,
+        "src": "audio/1706.03762/scene-3.mp3"
+      },
+      {
+        "dur": 14000,
+        "src": "audio/1706.03762/scene-4.mp3"
+      },
+      {
+        "dur": 14000,
+        "src": "audio/1706.03762/scene-5.mp3"
+      }
+    ],
+    "grandma": [
+      {
+        "dur": 14000,
+        "src": "audio/1706.03762/grandma-scene-0.mp3"
+      },
+      {
+        "dur": 14000,
+        "src": "audio/1706.03762/grandma-scene-1.mp3"
+      },
+      {
+        "dur": 16000,
+        "src": "audio/1706.03762/grandma-scene-2.mp3"
+      },
+      {
+        "dur": 18000,
+        "src": "audio/1706.03762/grandma-scene-3.mp3"
+      },
+      {
+        "dur": 14000,
+        "src": "audio/1706.03762/grandma-scene-4.mp3"
+      },
+      {
+        "dur": 14000,
+        "src": "audio/1706.03762/grandma-scene-5.mp3"
+      }
+    ]
+  },
+  {
+    "paperId": "2106.09685",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "rate": "-25%",
+    "scenes": [
+      {
+        "dur": 14000,
+        "src": "audio/2106.09685/scene-0.mp3"
+      },
+      {
+        "dur": 14000,
+        "src": "audio/2106.09685/scene-1.mp3"
+      },
+      {
+        "dur": 17000,
+        "src": "audio/2106.09685/scene-2.mp3"
+      },
+      {
+        "dur": 15000,
+        "src": "audio/2106.09685/scene-3.mp3"
+      },
+      {
+        "dur": 15000,
+        "src": "audio/2106.09685/scene-4.mp3"
+      },
+      {
+        "dur": 15000,
+        "src": "audio/2106.09685/scene-5.mp3"
+      }
+    ],
+    "grandma": [
+      {
+        "dur": 14000,
+        "src": "audio/2106.09685/grandma-scene-0.mp3"
+      },
+      {
+        "dur": 14000,
+        "src": "audio/2106.09685/grandma-scene-1.mp3"
+      },
+      {
+        "dur": 17000,
+        "src": "audio/2106.09685/grandma-scene-2.mp3"
+      },
+      {
+        "dur": 15000,
+        "src": "audio/2106.09685/grandma-scene-3.mp3"
+      },
+      {
+        "dur": 15000,
+        "src": "audio/2106.09685/grandma-scene-4.mp3"
+      },
+      {
+        "dur": 15000,
+        "src": "audio/2106.09685/grandma-scene-5.mp3"
+      }
+    ]
+  },
+  {
+    "paperId": "2005.11401",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "rate": "-25%",
+    "scenes": [
+      {
+        "dur": 14000,
+        "src": "audio/2005.11401/scene-0.mp3"
+      },
+      {
+        "dur": 14000,
+        "src": "audio/2005.11401/scene-1.mp3"
+      },
+      {
+        "dur": 16000,
+        "src": "audio/2005.11401/scene-2.mp3"
+      },
+      {
+        "dur": 16000,
+        "src": "audio/2005.11401/scene-3.mp3"
+      },
+      {
+        "dur": 15000,
+        "src": "audio/2005.11401/scene-4.mp3"
+      },
+      {
+        "dur": 15000,
+        "src": "audio/2005.11401/scene-5.mp3"
+      }
+    ],
+    "grandma": [
+      {
+        "dur": 14000,
+        "src": "audio/2005.11401/grandma-scene-0.mp3"
+      },
+      {
+        "dur": 14000,
+        "src": "audio/2005.11401/grandma-scene-1.mp3"
+      },
+      {
+        "dur": 16000,
+        "src": "audio/2005.11401/grandma-scene-2.mp3"
+      },
+      {
+        "dur": 16000,
+        "src": "audio/2005.11401/grandma-scene-3.mp3"
+      },
+      {
+        "dur": 15000,
+        "src": "audio/2005.11401/grandma-scene-4.mp3"
+      },
+      {
+        "dur": 15000,
+        "src": "audio/2005.11401/grandma-scene-5.mp3"
+      }
+    ]
+  },
+  {
+    "paperId": "2201.11903",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "rate": "-25%",
+    "scenes": [
+      {
+        "dur": 14000,
+        "src": "audio/2201.11903/scene-0.mp3"
+      },
+      {
+        "dur": 15000,
+        "src": "audio/2201.11903/scene-1.mp3"
+      },
+      {
+        "dur": 17000,
+        "src": "audio/2201.11903/scene-2.mp3"
+      },
+      {
+        "dur": 15000,
+        "src": "audio/2201.11903/scene-3.mp3"
+      },
+      {
+        "dur": 14000,
+        "src": "audio/2201.11903/scene-4.mp3"
+      },
+      {
+        "dur": 15000,
+        "src": "audio/2201.11903/scene-5.mp3"
+      }
+    ],
+    "grandma": [
+      {
+        "dur": 14000,
+        "src": "audio/2201.11903/grandma-scene-0.mp3"
+      },
+      {
+        "dur": 15000,
+        "src": "audio/2201.11903/grandma-scene-1.mp3"
+      },
+      {
+        "dur": 17000,
+        "src": "audio/2201.11903/grandma-scene-2.mp3"
+      },
+      {
+        "dur": 15000,
+        "src": "audio/2201.11903/grandma-scene-3.mp3"
+      },
+      {
+        "dur": 14000,
+        "src": "audio/2201.11903/grandma-scene-4.mp3"
+      },
+      {
+        "dur": 15000,
+        "src": "audio/2201.11903/grandma-scene-5.mp3"
+      }
+    ]
+  }
+]

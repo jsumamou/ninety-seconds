@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f9f5ec" />
+    <meta
+      name="description"
+      content="九十秒：收藏的论文自动归类，生成 90 秒微课、一页机制图解和三道自测卡，关键结论标注原文位置。"
+    />
+    <title>九十秒 · 把收藏的论文读成 90 秒</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="九十秒" />
+    <meta property="og:title" content="九十秒 · 把一篇论文读成 90 秒" />
+    <meta
+      property="og:description"
+      content="粘贴 arXiv 编号，生成 90 秒微课、一页机制图解和三道自测卡；每条结论都标出原文位置。"
+    />
+    <meta property="og:image" content="https://ninety-seconds-3ki7ns7ndm3.qoder.zone/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="九十秒：把一篇论文读成 90 秒" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://ninety-seconds-3ki7ns7ndm3.qoder.zone/og.png" />
+  </head>
+  <body>
+    <script>
+      // 首屏前就定好昼夜，避免加载后闪一下
+      (function () {
+        try {
+          var saved = localStorage.getItem("ninety-theme");
+          var sys = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          var theme = saved === "dark" || saved === "light" ? saved : sys;
+          document.documentElement.dataset.theme = theme;
+          document.documentElement.style.colorScheme = theme;
+        } catch (e) {}
+      })();
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

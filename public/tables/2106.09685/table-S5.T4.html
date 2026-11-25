@@ -1,0 +1,61 @@
+<table id="S5.T4.2" class="ltx_tabular ltx_centering ltx_align_middle">
+<tr id="S5.T4.2.1" class="ltx_tr">
+<td id="S5.T4.2.1.1" class="ltx_td ltx_align_left ltx_border_r ltx_border_ttt" rowspan="2"><span id="S5.T4.2.1.1.1" class="ltx_text">Model&amp;Method</span></td>
+<td id="S5.T4.2.1.2" class="ltx_td ltx_align_right ltx_border_r ltx_border_ttt"># Trainable</td>
+<td id="S5.T4.2.1.3" class="ltx_td ltx_align_center ltx_border_ttt">WikiSQL</td>
+<td id="S5.T4.2.1.4" class="ltx_td ltx_align_center ltx_border_ttt">MNLI-m</td>
+<td id="S5.T4.2.1.5" class="ltx_td ltx_align_center ltx_border_ttt">SAMSum</td></tr>
+<tr id="S5.T4.2.2" class="ltx_tr">
+<td id="S5.T4.2.2.1" class="ltx_td ltx_align_right ltx_border_r">Parameters</td>
+<td id="S5.T4.2.2.2" class="ltx_td ltx_align_center ltx_border_t">Acc. (%)</td>
+<td id="S5.T4.2.2.3" class="ltx_td ltx_align_center ltx_border_t">Acc. (%)</td>
+<td id="S5.T4.2.2.4" class="ltx_td ltx_align_center ltx_border_t">R1/R2/RL</td></tr>
+<tr id="S5.T4.2.3" class="ltx_tr">
+<td id="S5.T4.2.3.1" class="ltx_td ltx_align_left ltx_border_r ltx_border_t">GPT-3 (FT)</td>
+<td id="S5.T4.2.3.2" class="ltx_td ltx_align_right ltx_border_r ltx_border_t">175,255.8M</td>
+<td id="S5.T4.2.3.3" class="ltx_td ltx_align_center ltx_border_t"><span id="S5.T4.2.3.3.1" class="ltx_text ltx_font_bold">73.8</span></td>
+<td id="S5.T4.2.3.4" class="ltx_td ltx_align_center ltx_border_t">89.5</td>
+<td id="S5.T4.2.3.5" class="ltx_td ltx_align_center ltx_border_t">52.0/28.0/44.5</td></tr>
+<tr id="S5.T4.2.4" class="ltx_tr">
+<td id="S5.T4.2.4.1" class="ltx_td ltx_align_left ltx_border_r">GPT-3 (BitFit)</td>
+<td id="S5.T4.2.4.2" class="ltx_td ltx_align_right ltx_border_r">14.2M</td>
+<td id="S5.T4.2.4.3" class="ltx_td ltx_align_center">71.3</td>
+<td id="S5.T4.2.4.4" class="ltx_td ltx_align_center">91.0</td>
+<td id="S5.T4.2.4.5" class="ltx_td ltx_align_center">51.3/27.4/43.5</td></tr>
+<tr id="S5.T4.2.5" class="ltx_tr">
+<td id="S5.T4.2.5.1" class="ltx_td ltx_align_left ltx_border_r">GPT-3 (PreEmbed)</td>
+<td id="S5.T4.2.5.2" class="ltx_td ltx_align_right ltx_border_r">3.2M</td>
+<td id="S5.T4.2.5.3" class="ltx_td ltx_align_center">63.1</td>
+<td id="S5.T4.2.5.4" class="ltx_td ltx_align_center">88.6</td>
+<td id="S5.T4.2.5.5" class="ltx_td ltx_align_center">48.3/24.2/40.5</td></tr>
+<tr id="S5.T4.2.6" class="ltx_tr">
+<td id="S5.T4.2.6.1" class="ltx_td ltx_align_left ltx_border_r">GPT-3 (PreLayer)</td>
+<td id="S5.T4.2.6.2" class="ltx_td ltx_align_right ltx_border_r">20.2M</td>
+<td id="S5.T4.2.6.3" class="ltx_td ltx_align_center">70.1</td>
+<td id="S5.T4.2.6.4" class="ltx_td ltx_align_center">89.5</td>
+<td id="S5.T4.2.6.5" class="ltx_td ltx_align_center">50.8/27.3/43.5</td></tr>
+<tr id="S5.T4.2.7" class="ltx_tr">
+<td id="S5.T4.2.7.1" class="ltx_td ltx_align_left ltx_border_r">GPT-3 (<math id="S5.T4.m1" class="ltx_Math" alttext="\text{Adapter}^{\text{H}}" display="inline" intent=":literal"><semantics><msup><mtext>Adapter</mtext><mtext>H</mtext></msup><annotation encoding="application/x-tex">\text{Adapter}^{\text{H}}</annotation></semantics></math>)</td>
+<td id="S5.T4.2.7.2" class="ltx_td ltx_align_right ltx_border_r">7.1M</td>
+<td id="S5.T4.2.7.3" class="ltx_td ltx_align_center">71.9</td>
+<td id="S5.T4.2.7.4" class="ltx_td ltx_align_center">89.8</td>
+<td id="S5.T4.2.7.5" class="ltx_td ltx_align_center">53.0/28.9/44.8</td></tr>
+<tr id="S5.T4.2.8" class="ltx_tr">
+<td id="S5.T4.2.8.1" class="ltx_td ltx_align_left ltx_border_r">GPT-3 (<math id="S5.T4.m2" class="ltx_Math" alttext="\text{Adapter}^{\text{H}}" display="inline" intent=":literal"><semantics><msup><mtext>Adapter</mtext><mtext>H</mtext></msup><annotation encoding="application/x-tex">\text{Adapter}^{\text{H}}</annotation></semantics></math>)</td>
+<td id="S5.T4.2.8.2" class="ltx_td ltx_align_right ltx_border_r">40.1M</td>
+<td id="S5.T4.2.8.3" class="ltx_td ltx_align_center">73.2</td>
+<td id="S5.T4.2.8.4" class="ltx_td ltx_align_center"><span id="S5.T4.2.8.4.1" class="ltx_text ltx_font_bold">91.5</span></td>
+<td id="S5.T4.2.8.5" class="ltx_td ltx_align_center">53.2/29.0/45.1</td></tr>
+<tr id="S5.T4.2.9" class="ltx_tr">
+<td id="S5.T4.2.9.1" class="ltx_td ltx_align_left ltx_border_r ltx_border_t">GPT-3 (LoRA)</td>
+<td id="S5.T4.2.9.2" class="ltx_td ltx_align_right ltx_border_r ltx_border_t">4.7M</td>
+<td id="S5.T4.2.9.3" class="ltx_td ltx_align_center ltx_border_t">73.4</td>
+<td id="S5.T4.2.9.4" class="ltx_td ltx_align_center ltx_border_t"><span id="S5.T4.2.9.4.1" class="ltx_text ltx_font_bold">91.7</span></td>
+<td id="S5.T4.2.9.5" class="ltx_td ltx_align_center ltx_border_t"><span id="S5.T4.2.9.5.1" class="ltx_text ltx_font_bold">53.8/29.8/45.9</span></td></tr>
+<tr id="S5.T4.2.10" class="ltx_tr">
+<td id="S5.T4.2.10.1" class="ltx_td ltx_align_left ltx_border_bb ltx_border_r">GPT-3 (LoRA)</td>
+<td id="S5.T4.2.10.2" class="ltx_td ltx_align_right ltx_border_bb ltx_border_r">37.7M</td>
+<td id="S5.T4.2.10.3" class="ltx_td ltx_align_center ltx_border_bb"><span id="S5.T4.2.10.3.1" class="ltx_text ltx_font_bold">74.0</span></td>
+<td id="S5.T4.2.10.4" class="ltx_td ltx_align_center ltx_border_bb"><span id="S5.T4.2.10.4.1" class="ltx_text ltx_font_bold">91.6</span></td>
+<td id="S5.T4.2.10.5" class="ltx_td ltx_align_center ltx_border_bb">53.4/29.2/45.1</td></tr>
+</table>

@@ -1,0 +1,1082 @@
+[
+  {
+    "paperId": "1706.03762",
+    "label": "Transformer",
+    "items": [
+      {
+        "paperId": "1706.03762",
+        "id": "S3.F1",
+        "kind": "figure",
+        "caption": "Figure 1: The Transformer - model architecture.",
+        "files": [
+          "figures/1706.03762/fig-S3.F1-1.png"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "1706.03762",
+        "id": "S3.F2",
+        "kind": "figure",
+        "caption": "Figure 2: (left) Scaled Dot-Product Attention. (right) Multi-Head Attention consists of several attention layers running in parallel.",
+        "files": [
+          "figures/1706.03762/fig-S3.F2-1.png",
+          "figures/1706.03762/fig-S3.F2-2.png"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "1706.03762",
+        "id": "S4.T1",
+        "kind": "table",
+        "caption": "Table 1: Maximum path lengths, per-layer complexity and minimum number of sequential operations for different layer types. n is the sequence length, d is the representation dimension, k is the kernel size of convolutions and r the size of the neighborhood in restricted self-attention.",
+        "files": [],
+        "tableHtml": "tables/1706.03762/table-S4.T1.html"
+      },
+      {
+        "paperId": "1706.03762",
+        "id": "S6.T2",
+        "kind": "table",
+        "caption": "Table 2: The Transformer achieves better BLEU scores than previous state-of-the-art models on the English-to-German and English-to-French newstest2014 tests at a fraction of the training cost.",
+        "files": [],
+        "tableHtml": "tables/1706.03762/table-S6.T2.html"
+      },
+      {
+        "paperId": "1706.03762",
+        "id": "S6.T3",
+        "kind": "table",
+        "caption": "Table 3: Variations on the Transformer architecture. Unlisted values are identical to those of the base model. All metrics are on the English-to-German translation development set, newstest2013. Listed perplexities are per-wordpiece, according to our byte-pair encoding, and should not be compared to per-word perplexities.",
+        "files": [],
+        "tableHtml": "tables/1706.03762/table-S6.T3.html"
+      },
+      {
+        "paperId": "1706.03762",
+        "id": "S6.T4",
+        "kind": "table",
+        "caption": "Table 4: The Transformer generalizes well to English constituency parsing (Results are on Section 23 of WSJ)",
+        "files": [],
+        "tableHtml": "tables/1706.03762/table-S6.T4.html"
+      },
+      {
+        "paperId": "1706.03762",
+        "id": "Sx1.F3",
+        "kind": "figure",
+        "caption": "Figure 3: An example of the attention mechanism following long-distance dependencies in the encoder self-attention in layer 5 of 6. Many of the attention heads attend to a distant dependency of the verb ‘making’, completing the phrase ‘making…more difficult’. Attentions here shown only for the word ‘making’. Different colors represent different heads. Best viewed in color.",
+        "files": [
+          "figures/1706.03762/fig-Sx1.F3-1.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "1706.03762",
+        "id": "Sx1.F4",
+        "kind": "figure",
+        "caption": "Figure 4: Two attention heads, also in layer 5 of 6, apparently involved in anaphora resolution. Top: Full attentions for head 5. Bottom: Isolated attentions from just the word ‘its’ for attention heads 5 and 6. Note that the attentions are very sharp for this word.",
+        "files": [
+          "figures/1706.03762/fig-Sx1.F4-1.svg",
+          "figures/1706.03762/fig-Sx1.F4-2.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "1706.03762",
+        "id": "Sx1.F5",
+        "kind": "figure",
+        "caption": "Figure 5: Many of the attention heads exhibit behaviour that seems related to the structure of the sentence. We give two such examples above, from two different heads from the encoder self-attention at layer 5 of 6. The heads clearly learned to perform different tasks.",
+        "files": [
+          "figures/1706.03762/fig-Sx1.F5-1.svg",
+          "figures/1706.03762/fig-Sx1.F5-2.svg"
+        ],
+        "tableHtml": null
+      }
+    ]
+  },
+  {
+    "paperId": "2005.14165",
+    "label": "GPT-3",
+    "items": [
+      {
+        "paperId": "2005.14165",
+        "id": "S1.F1",
+        "kind": "figure",
+        "caption": "Figure 1.1: Language model meta-learning. During unsupervised pre-training, a language model develops a broad set of skills and pattern recognition abilities. It then uses these abilities at inference time to rapidly adapt to or recognize the desired task. We use the term “in-context learning” to describe the inner loop of this process, which occurs within the forward-pass upon each sequence. The sequences in this diagram are not intended to be representative of the data a model would see during pre-training, but are intended to show that there are sometimes repeated sub-tasks embedded within a single sequence.",
+        "files": [
+          "figures/2005.14165/fig-S1.F1-1.png"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2005.14165",
+        "id": "S1.F2",
+        "kind": "figure",
+        "caption": "Figure 1.2: Larger models make increasingly efficient use of in-context information. We show in-context learning performance on a simple task requiring the model to remove random symbols from a word, both with and without a natural language task description (see Sec. 3.9.2 ). The steeper “in-context learning curves” for large models demonstrate improved ability to learn a task from contextual information. We see qualitatively similar behavior across a wide range of tasks.",
+        "files": [
+          "figures/2005.14165/fig-S1.F2-1.png"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2005.14165",
+        "id": "S1.F3",
+        "kind": "figure",
+        "caption": "Figure 1.3: Aggregate performance for all 42 accuracy-denominated benchmarks While zero-shot performance improves steadily with model size, few-shot performance increases more rapidly, demonstrating that larger models are more proficient at in-context learning. See Figure 3.8 for a more detailed analysis on SuperGLUE, a standard NLP benchmark suite.",
+        "files": [
+          "figures/2005.14165/fig-S1.F3-1.png"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2005.14165",
+        "id": "S2.F1",
+        "kind": "figure",
+        "caption": "Figure 2.1: Zero-shot, one-shot and few-shot, contrasted with traditional fine-tuning . The panels above show four methods for performing a task with a language model – fine-tuning is the traditional method, whereas zero-, one-, and few-shot, which we study in this work, require the model to perform the task with only forward passes at test time. We typically present the model with a few dozen examples in the few shot setting. Exact phrasings for all task descriptions, examples and prompts can be found in Appendix G .",
+        "files": [
+          "figures/2005.14165/fig-S2.F1-1.png"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2005.14165",
+        "id": "S2.T1",
+        "kind": "table",
+        "caption": "Table 2.1: Sizes, architectures, and learning hyper-parameters (batch size in tokens and learning rate) of the models which we trained. All models were trained for a total of 300 billion tokens.",
+        "files": [],
+        "tableHtml": "tables/2005.14165/table-S2.T1.html"
+      },
+      {
+        "paperId": "2005.14165",
+        "id": "S2.F2",
+        "kind": "figure",
+        "caption": "Figure 2.2: Total compute used during training . Based on the analysis in Scaling Laws For Neural Language Models [ 57 ] we train much larger models on many fewer tokens than is typical. As a consequence, although GPT-3 3B is almost 10x larger than RoBERTa-Large (355M params), both models took roughly 50 petaflop/s-days of compute during pre-training. Methodology for these calculations can be found in Appendix D .",
+        "files": [
+          "figures/2005.14165/fig-S2.F2-1.png"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2005.14165",
+        "id": "S2.T2",
+        "kind": "table",
+        "caption": "Table 2.2: Datasets used to train GPT-3 . “Weight in training mix” refers to the fraction of examples during training that are drawn from a given dataset, which we intentionally do not make proportional to the size of the dataset. As a result, when we train for 300 billion tokens, some datasets are seen up to 3.4 times during training while other datasets are seen less than once.",
+        "files": [],
+        "tableHtml": "tables/2005.14165/table-S2.T2.html"
+      },
+      {
+        "paperId": "2005.14165",
+        "id": "S3.T1",
+        "kind": "table",
+        "caption": "Table 3.1: Zero-shot results on PTB language modeling dataset. Many other common language modeling datasets are omitted because they are derived from Wikipedia or other sources which are included in GPT-3’s training data. a [ 117 ]",
+        "files": [],
+        "tableHtml": "tables/2005.14165/table-S3.T1.html"
+      },
+      {
+        "paperId": "2005.14165",
+        "id": "S3.T2",
+        "kind": "table",
+        "caption": "Table 3.2: Performance on cloze and completion tasks. GPT-3 significantly improves SOTA on LAMBADA while achieving respectable performance on two difficult completion prediction datasets. a [ 132 ] b [ 117 ] c [ 64 ] d [ 63 ]",
+        "files": [],
+        "tableHtml": "tables/2005.14165/table-S3.T2.html"
+      }
+    ]
+  },
+  {
+    "paperId": "2001.08361",
+    "label": "Scaling Laws",
+    "items": [
+      {
+        "paperId": "2001.08361",
+        "id": "S1.F1",
+        "kind": "figure",
+        "caption": "Figure 1: Language modeling performance improves smoothly as we increase the model size, datasetset size, and amount of compute 1 1 1 Here we display predicted compute when using a sufficiently small batch size. See Figure 13 for comparison to the purely empirical data. used for training. For optimal performance all three factors must be scaled up in tandem. Empirical performance has a power-law relationship with each individual factor when not bottlenecked by the other two.",
+        "files": [
+          "figures/2001.08361/fig-S1.F1-1.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2001.08361",
+        "id": "S1.F2",
+        "kind": "figure",
+        "caption": "Figure 2: We show a series of language model training runs, with models ranging in size from 10^{3} to 10^{9} parameters (excluding embeddings).",
+        "files": [
+          "figures/2001.08361/fig-S1.F2-1.png"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2001.08361",
+        "id": "S1.F3",
+        "kind": "figure",
+        "caption": "Figure 3: As more compute becomes available, we can choose how much to allocate towards training larger models, using larger batches, and training for more steps. We illustrate this for a billion-fold increase in compute. For optimally compute-efficient training, most of the increase should go towards increased model size. A relatively small increase in data is needed to avoid reuse. Of the increase in data, most can be used to increase parallelism through larger batch sizes, with only a very small increase in serial training time required.",
+        "files": [
+          "figures/2001.08361/fig-S1.F3-1.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2001.08361",
+        "id": "S1.F4",
+        "kind": "figure",
+        "caption": "Figure 4: Left : The early-stopped test loss L(N,D) varies predictably with the dataset size D and model size N according to Equation ( 1.5 ). Right : After an initial transient period, learning curves for all model sizes N can be fit with Equation ( 1.6 ), which is parameterized in terms of S_{\\rm min} , the number of steps when training at large batch size (details in Section 5.1 ).",
+        "files": [
+          "figures/2001.08361/fig-S1.F4-1.svg",
+          "figures/2001.08361/fig-S1.F4-2.png"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2001.08361",
+        "id": "S2.T1",
+        "kind": "table",
+        "caption": "Table 1: Parameter counts and compute (forward pass) estimates for a Transformer model. Sub-leading terms such as nonlinearities, biases, and layer normalization are omitted.",
+        "files": [],
+        "tableHtml": "tables/2001.08361/table-S2.T1.html"
+      },
+      {
+        "paperId": "2001.08361",
+        "id": "S3.F5",
+        "kind": "figure",
+        "caption": "Figure 5: Performance depends very mildly on model shape when the total number of non-embedding parameters N is held fixed. The loss varies only a few percent over a wide range of shapes. Small differences in parameter counts are compensated for by using the fit to L(N) as a baseline. Aspect ratio in particular can vary by a factor of 40 while only slightly impacting performance; an (n_{\\mathrm{layer}},d_{\\mathrm{model}})=(6,4288) reaches a loss within 3% of the (48,1600) model used in [ RWC+19 ] .",
+        "files": [
+          "figures/2001.08361/fig-S3.F5-1.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2001.08361",
+        "id": "S4.T2",
+        "kind": "table",
+        "caption": "Table 2: Fits to L(N,D)",
+        "files": [],
+        "tableHtml": "tables/2001.08361/table-S4.T2.html"
+      },
+      {
+        "paperId": "2001.08361",
+        "id": "S5.T3",
+        "kind": "table",
+        "caption": "Table 3: Fits to L(N,S)",
+        "files": [],
+        "tableHtml": "tables/2001.08361/table-S5.T3.html"
+      }
+    ]
+  },
+  {
+    "paperId": "2106.09685",
+    "label": "LoRA",
+    "items": [
+      {
+        "paperId": "2106.09685",
+        "id": "S1.F1",
+        "kind": "figure",
+        "caption": "Figure 1: Our reparametrization. We only train A and B .",
+        "files": [
+          "figures/2106.09685/fig-S1.F1-1.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2106.09685",
+        "id": "S3.T1",
+        "kind": "table",
+        "caption": "Table 1: Infernece latency of a single forward pass in GPT-2 medium measured in milliseconds, averaged over 100 trials. We use an NVIDIA Quadro RTX8000. “ |\\Theta| ” denotes the number of trainable parameters in adapter layers. \\text{Adapter}^{\\text{L}} and \\text{Adapter}^{\\text{H}} are two variants of adapter tuning, which we describe in Section 5.1 . The inference latency introduced by adapter layers can be significant in an online, short-sequence-length scenario. See the full study in Appendix B .",
+        "files": [],
+        "tableHtml": "tables/2106.09685/table-S3.T1.html"
+      },
+      {
+        "paperId": "2106.09685",
+        "id": "S5.T2",
+        "kind": "table",
+        "caption": "Table 2: \\text{RoBERTa}_{\\text{base}} , \\text{RoBERTa}_{\\text{large}} , and \\text{DeBERTa}_{\\text{XXL}} with different adaptation methods on the GLUE benchmark. We report the overall (matched and mismatched) accuracy for MNLI, Matthew’s correlation for CoLA, Pearson correlation for STS-B, and accuracy for other tasks. Higher is better for all metrics. * indicates numbers published in prior works. \\dagger indicates runs configured in a setup similar to Houlsby et al. (2019) for a fair comparison.",
+        "files": [],
+        "tableHtml": "tables/2106.09685/table-S5.T2.html"
+      },
+      {
+        "paperId": "2106.09685",
+        "id": "S5.T3",
+        "kind": "table",
+        "caption": "Table 3: GPT-2 medium (M) and large (L) with different adaptation methods on the E2E NLG Challenge. For all metrics, higher is better. LoRA outperforms several baselines with comparable or fewer trainable parameters. Confidence intervals are shown for experiments we ran. * indicates numbers published in prior works.",
+        "files": [],
+        "tableHtml": "tables/2106.09685/table-S5.T3.html"
+      },
+      {
+        "paperId": "2106.09685",
+        "id": "S5.T4",
+        "kind": "table",
+        "caption": "Table 4: Performance of different adaptation methods on GPT-3 175B. We report the logical form validation accuracy on WikiSQL, validation accuracy on MultiNLI-matched, and Rouge-1/2/L on SAMSum. LoRA performs better than prior approaches, including full fine-tuning. The results on WikiSQL have a fluctuation around \\pm 0.5\\% , MNLI-m around \\pm 0.1\\% , and SAMSum around \\pm 0.2 / \\pm 0.2 / \\pm 0.1 for the three metrics.",
+        "files": [],
+        "tableHtml": "tables/2106.09685/table-S5.T4.html"
+      },
+      {
+        "paperId": "2106.09685",
+        "id": "S5.F2",
+        "kind": "figure",
+        "caption": "Figure 2: GPT-3 175B validation accuracy vs. number of trainable parameters of several adaptation methods on WikiSQL and MNLI-matched. LoRA exhibits better scalability and task performance. See Section F.2 for more details on the plotted data points.",
+        "files": [
+          "figures/2106.09685/fig-S5.F2-1.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2106.09685",
+        "id": "S7.F3",
+        "kind": "figure",
+        "caption": "Figure 3: Subspace similarity between column vectors of A_{r=8} and A_{r=64} for both \\Delta W_{q} and \\Delta W_{v} . The third and the fourth figures zoom in on the lower-left triangle in the first two figures. The top directions in r=8 are included in r=64 , and vice versa.",
+        "files": [
+          "figures/2106.09685/fig-S7.F3-1.png"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2106.09685",
+        "id": "S7.F4",
+        "kind": "figure",
+        "caption": "Figure 4: Left and Middle: Normalized subspace similarity between the column vectors of A_{r=64} from two random seeds, for both \\Delta W_{q} and \\Delta W_{v} in the 48-th layer. Right: the same heat-map between the column vectors of two random Gaussian matrices. See Section H.1 for other layers.",
+        "files": [
+          "figures/2106.09685/fig-S7.F4-1.png"
+        ],
+        "tableHtml": null
+      }
+    ]
+  },
+  {
+    "paperId": "2305.14314",
+    "label": "QLoRA",
+    "items": [
+      {
+        "paperId": "2305.14314",
+        "id": "S1.T1",
+        "kind": "table",
+        "caption": "Table 1: Elo ratings for a competition between models, averaged for 10,000 random initial orderings. The winner of a match is determined by GPT-4 which declares which response is better for a given prompt of the the Vicuna benchmark. 95% confidence intervals are shown ( \\pm ). After GPT-4, Guanaco 33B and 65B win the most matches, while Guanaco 13B scores better than Bard.",
+        "files": [],
+        "tableHtml": "tables/2305.14314/table-S1.T1.html"
+      },
+      {
+        "paperId": "2305.14314",
+        "id": "S1.F1",
+        "kind": "figure",
+        "caption": "Figure 1: Different finetuning methods and their memory requirements. QLoRA improves over LoRA by quantizing the transformer model to 4-bit precision and using paged optimizers to handle memory spikes.",
+        "files": [
+          "figures/2305.14314/fig-S1.F1-1.png"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2305.14314",
+        "id": "S4.F2",
+        "kind": "figure",
+        "caption": "Figure 2: RougeL for LLaMA 7B models on the Alpaca dataset. Each point represents a run with a different random seed. We improve on the Stanford Alpaca fully finetuned default hyperparameters to construct a strong 16-bit baseline for comparisons. Using LoRA on all transformer layers is critical to match 16-bit performance.",
+        "files": [
+          "figures/2305.14314/fig-S4.F2-1.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2305.14314",
+        "id": "S4.F3",
+        "kind": "figure",
+        "caption": "Figure 3: Mean zero-shot accuracy over Winogrande, HellaSwag, PiQA, Arc-Easy, and Arc-Challenge using LLaMA models with different 4-bit data types. The NormalFloat data type significantly improves the bit-for-bit accuracy gains compared to regular 4-bit Floats. While Double Quantization (DQ) only leads to minor gains, it allows for a more fine-grained control over the memory footprint to fit models of certain size (33B/65B) into certain GPUs (24/48GB).",
+        "files": [
+          "figures/2305.14314/fig-S4.F3-1.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2305.14314",
+        "id": "S4.T2",
+        "kind": "table",
+        "caption": "Table 2: Pile Common Crawl mean perplexity for different data types for 125M to 13B OPT, BLOOM, LLaMA, and Pythia models.",
+        "files": [],
+        "tableHtml": "tables/2305.14314/table-S4.T2.html"
+      },
+      {
+        "paperId": "2305.14314",
+        "id": "S4.T3",
+        "kind": "table",
+        "caption": "Table 3: Experiments comparing 16-bit BrainFloat (BF16), 8-bit Integer (Int8), 4-bit Float (FP4), and 4-bit NormalFloat (NF4) on GLUE and Super-NaturalInstructions. QLoRA replicates 16-bit LoRA and full-finetuning.",
+        "files": [],
+        "tableHtml": "tables/2305.14314/table-S4.T3.html"
+      },
+      {
+        "paperId": "2305.14314",
+        "id": "S4.T4",
+        "kind": "table",
+        "caption": "Table 4: Mean 5-shot MMLU test accuracy for LLaMA 7-65B models finetuned with adapters on Alpaca and FLAN v2 for different data types. Overall, NF4 with double quantization (DQ) matches BFloat16 performance, while FP4 is consistently one percentage point behind both.",
+        "files": [],
+        "tableHtml": "tables/2305.14314/table-S4.T4.html"
+      }
+    ]
+  },
+  {
+    "paperId": "2205.14135",
+    "label": "FlashAttention",
+    "items": [
+      {
+        "paperId": "2205.14135",
+        "id": "S1.F1",
+        "kind": "figure",
+        "caption": "Figure 1 : Left: FlashAttention uses tiling to prevent materialization of the large N\\times N attention matrix (dotted box) on (relatively) slow GPU HBM. In the outer loop (red arrows), FlashAttention loops through blocks of the \\mathbf{K} and \\mathbf{V} matrices and loads them to fast on-chip SRAM. In each block, FlashAttention loops over blocks of \\mathbf{Q} matrix (blue arrows), loading them to SRAM, and writing the output of the attention computation back to HBM. Right: Speedup over the PyTorch implementation of attention on GPT-2. FlashAttention does not read and write the large N\\times N attention matrix to HBM, resulting in an 7.6 \\times speedup on the attention computation.",
+        "files": [
+          "figures/2205.14135/fig-S1.F1-1.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2205.14135",
+        "id": "S3.F2",
+        "kind": "table",
+        "caption": "Figure 2 : Left : Forward + backward runtime of standard attention and FlashAttention for GPT-2 medium (seq. length 1024, head dim. 64, 16 heads, batch size 64) on A100 GPU. HBM access is the primary factor affecting runtime. Middle : Forward runtime of FlashAttention (seq. length 1024, head dim. 64, 16 heads, batch size 64) on A100 GPU. Fewer HBM accesses result in faster runtime, up to a point. Right : The runtime (for seq. length 4K) of block-sparse FlashAttention is faster than FlashAttention by a factor proportional to the sparsity.",
+        "files": [],
+        "tableHtml": "tables/2205.14135/table-S3.F2.html"
+      },
+      {
+        "paperId": "2205.14135",
+        "id": "S4.T1",
+        "kind": "table",
+        "caption": "Table 1: Training time of BERT-large, starting from the same initialization provided by the MLPerf benchmark, to reach the target accuracy of 72.0% on masked language modeling. Averaged over 10 runs on 8 \\times A100 GPUs.",
+        "files": [],
+        "tableHtml": "tables/2205.14135/table-S4.T1.html"
+      },
+      {
+        "paperId": "2205.14135",
+        "id": "S4.T2",
+        "kind": "table",
+        "caption": "Table 2: GPT-2 small and medium using FlashAttention achieve up to 3 \\times speed up compared to Huggingface implementation and up to 1.7 \\times compared to Megatron-LM. Training time reported on 8 \\times A100s GPUs.",
+        "files": [],
+        "tableHtml": "tables/2205.14135/table-S4.T2.html"
+      },
+      {
+        "paperId": "2205.14135",
+        "id": "S4.T3",
+        "kind": "table",
+        "caption": "Table 3 : The performance of standard attention, FlashAttention , block-sparse FlashAttention , and approximate attention baselines on the Long-Range-Arena benchmarks.",
+        "files": [],
+        "tableHtml": "tables/2205.14135/table-S4.T3.html"
+      },
+      {
+        "paperId": "2205.14135",
+        "id": "S4.F3",
+        "kind": "figure",
+        "caption": "Figure 3 : Left: runtime of forward pass + backward pass. Right: attention memory usage.",
+        "files": [
+          "figures/2205.14135/fig-S4.F3-1.svg"
+        ],
+        "tableHtml": null
+      }
+    ]
+  },
+  {
+    "paperId": "2006.11239",
+    "label": "DDPM",
+    "items": [
+      {
+        "paperId": "2006.11239",
+        "id": "S0.F1",
+        "kind": "figure",
+        "caption": "Figure 1 : Generated samples on CelebA-HQ 256\\times 256 (left) and unconditional CIFAR10 (right)",
+        "files": [
+          "figures/2006.11239/fig-S0.F1-1.png",
+          "figures/2006.11239/fig-S0.F1-2.png"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2006.11239",
+        "id": "S2.F2",
+        "kind": "figure",
+        "caption": "Figure 2 : The directed graphical model considered in this work.",
+        "files": [
+          "figures/2006.11239/fig-S2.F2-1.png"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2006.11239",
+        "id": "S4.T1",
+        "kind": "table",
+        "caption": "Table 1 : CIFAR10 results. NLL measured in bits/dim.",
+        "files": [],
+        "tableHtml": "tables/2006.11239/table-S4.T1.html"
+      },
+      {
+        "paperId": "2006.11239",
+        "id": "S4.T2",
+        "kind": "table",
+        "caption": "Table 2 : Unconditional CIFAR10 reverse process parameterization and training objective ablation. Blank entries were unstable to train and generated poor samples with out-of-range scores.",
+        "files": [],
+        "tableHtml": "tables/2006.11239/table-S4.T2.html"
+      },
+      {
+        "paperId": "2006.11239",
+        "id": "S4.F4.fig1",
+        "kind": "figure",
+        "caption": "Figure 3 : LSUN Church samples. FID= 7.89",
+        "files": [
+          "figures/2006.11239/fig-S4.F4.fig1-1.jpg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2006.11239",
+        "id": "S4.F4.fig2",
+        "kind": "figure",
+        "caption": "Figure 4 : LSUN Bedroom samples. FID= 4.90",
+        "files": [
+          "figures/2006.11239/fig-S4.F4.fig2-1.jpg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2006.11239",
+        "id": "S4.F5",
+        "kind": "figure",
+        "caption": "Figure 5 : Unconditional CIFAR10 test set rate-distortion vs. time. Distortion is measured in root mean squared error on a [0,255] scale. See Table 4 for details.",
+        "files": [
+          "figures/2006.11239/fig-S4.F5-1.svg",
+          "figures/2006.11239/fig-S4.F5-2.svg",
+          "figures/2006.11239/fig-S4.F5-3.svg"
+        ],
+        "tableHtml": null
+      }
+    ]
+  },
+  {
+    "paperId": "2112.10752",
+    "label": "Latent Diffusion",
+    "items": [
+      {
+        "paperId": "2112.10752",
+        "id": "S1.F1",
+        "kind": "figure",
+        "caption": "Figure 1 : Boosting the upper bound on achievable quality with less agressive downsampling. Since diffusion models offer excellent inductive biases for spatial data, we do not need the heavy spatial downsampling of related generative models in latent space, but can still greatly reduce the dimensionality of the data via suitable autoencoding models, see Sec. 3 . Images are from the DIV2K [ 1 ] validation set, evaluated at 512^{2} px. We denote the spatial downsampling factor by f . Reconstruction FIDs [ 29 ] and PSNR are calculated on ImageNet-val. [ 12 ] ; see also Tab. 8 .",
+        "files": [
+          "figures/2112.10752/fig-S1.F1-1.jpg",
+          "figures/2112.10752/fig-S1.F1-2.jpg",
+          "figures/2112.10752/fig-S1.F1-3.jpg",
+          "figures/2112.10752/fig-S1.F1-4.jpg",
+          "figures/2112.10752/fig-S1.F1-5.jpg",
+          "figures/2112.10752/fig-S1.F1-6.jpg",
+          "figures/2112.10752/fig-S1.F1-7.jpg",
+          "figures/2112.10752/fig-S1.F1-8.jpg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2112.10752",
+        "id": "S1.F2",
+        "kind": "figure",
+        "caption": "Figure 2 : Illustrating perceptual and semantic compression: Most bits of a digital image correspond to imperceptible details. While DMs allow to suppress this semantically meaningless information by minimizing the responsible loss term, gradients (during training) and the neural network backbone (training and inference) still need to be evaluated on all pixels, leading to superfluous computations and unnecessarily expensive optimization and inference. We propose latent diffusion models (LDMs) as an effective generative model and a separate mild compression stage that only eliminates imperceptible details. Data and images from [ 30 ] .",
+        "files": [
+          "figures/2112.10752/fig-S1.F2-1.jpg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2112.10752",
+        "id": "S3.F3",
+        "kind": "figure",
+        "caption": "Figure 3 : We condition LDMs either via concatenation or by a more general cross-attention mechanism. See Sec. 3.3",
+        "files": [
+          "figures/2112.10752/fig-S3.F3-1.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2112.10752",
+        "id": "S3.F4",
+        "kind": "table",
+        "caption": "Figure 4 : Samples from LDMs trained on CelebAHQ [ 39 ] , FFHQ [ 41 ] , LSUN-Churches [ 102 ] , LSUN-Bedrooms [ 102 ] and class-conditional ImageNet [ 12 ] , each with a resolution of 256\\times 256 . Best viewed when zoomed in. For more samples cf . the supplement.",
+        "files": [],
+        "tableHtml": "tables/2112.10752/table-S3.F4.html"
+      },
+      {
+        "paperId": "2112.10752",
+        "id": "S4.F5",
+        "kind": "table",
+        "caption": "Figure 5 : Samples for user-defined text prompts from our model for text-to-image synthesis, LDM-8 (KL) , which was trained on the LAION [ 78 ] database. Samples generated with 200 DDIM steps and \\eta=1.0 . We use unconditional guidance [ 32 ] with s=10.0 .",
+        "files": [],
+        "tableHtml": "tables/2112.10752/table-S4.F5.html"
+      },
+      {
+        "paperId": "2112.10752",
+        "id": "S4.F6.fig1",
+        "kind": "figure",
+        "caption": "",
+        "files": [
+          "figures/2112.10752/fig-S4.F6.fig1-1.jpg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2112.10752",
+        "id": "S4.F6.fig2",
+        "kind": "figure",
+        "caption": "",
+        "files": [
+          "figures/2112.10752/fig-S4.F6.fig2-1.jpg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2112.10752",
+        "id": "S4.F8",
+        "kind": "table",
+        "caption": "Figure 8 : Layout-to-image synthesis with an LDM on COCO [ 4 ] , see Sec. 4.3.1 . Quantitative evaluation in the supplement D.3 .",
+        "files": [],
+        "tableHtml": "tables/2112.10752/table-S4.F8.html"
+      },
+      {
+        "paperId": "2112.10752",
+        "id": "S4.F10",
+        "kind": "table",
+        "caption": "Figure 10 : ImageNet 64 \\rightarrow 256 super-resolution on ImageNet-Val. LDM-SR has advantages at rendering realistic textures but SR3 can synthesize more coherent fine structures. See appendix for additional samples and cropouts. SR3 results from [ 72 ] .",
+        "files": [],
+        "tableHtml": "tables/2112.10752/table-S4.F10.html"
+      }
+    ]
+  },
+  {
+    "paperId": "1406.2661",
+    "label": "GAN",
+    "items": [
+      {
+        "paperId": "1406.2661",
+        "id": "S3.F1",
+        "kind": "table",
+        "caption": "Figure 1: Generative adversarial nets are trained by simultaneously updating the d iscriminative distribution ( D , blue, dashed line) so that it discriminates between samples from the data generating distribution (black, dotted line) p_{\\bm{x}} from those of the g enerative distribution p_{g} (G) (green, solid line). The lower horizontal line is the domain from which \\bm{z} is sampled, in this case uniformly. The horizontal line above is part of the domain of \\bm{x} . The upward arrows show how the mapping \\bm{x}=G(\\bm{z}) imposes the non-uniform distribution p_{g} on transformed samples. G contracts in regions of high density and expands in regions of low density of p_{g} . (a) Consider an adversarial pair near convergence: p_{g} is similar to p_{\\text{data}} and D is a partially accurate classifier. (b) In the inner loop of the algorithm D is trained to discriminate samples from data, converging to D^{*}(\\bm{x})=\\frac{p_{\\text{data}}(\\bm{x})}{p_{\\text{data}}(\\bm{x})+p_{g}(\\bm{x})} . (c) After an update to G , gradient of D has guided G(\\bm{z}) to flow to regions that are more likely to be classified as data. (d) After several steps of training, if G and D have enough capacity, they will reach a point at which both cannot improve because p_{g}=p_{\\text{data}} . The discriminator is unable to differentiate between the two distributions, i.e. D(\\bm{x})=\\frac{1}{2} .",
+        "files": [],
+        "tableHtml": "tables/1406.2661/table-S3.F1.html"
+      },
+      {
+        "paperId": "1406.2661",
+        "id": "S5.T1",
+        "kind": "table",
+        "caption": "Table 1: Parzen window-based log-likelihood estimates. The reported numbers on MNIST are the mean log-likelihood of samples on test set, with the standard error of the mean computed across examples. On TFD, we computed the standard error across folds of the dataset, with a different \\sigma chosen using the validation set of each fold. On TFD, \\sigma was cross validated on each fold and mean log-likelihood on each fold were computed. For MNIST we compare against other models of the real-valued (rather than binary) version of dataset.",
+        "files": [],
+        "tableHtml": "tables/1406.2661/table-S5.T1.html"
+      },
+      {
+        "paperId": "1406.2661",
+        "id": "S5.F2",
+        "kind": "table",
+        "caption": "Figure 2: Visualization of samples from the model. Rightmost column shows the nearest training example of the neighboring sample, in order to demonstrate that the model has not memorized the training set. Samples are fair random draws, not cherry-picked. Unlike most other visualizations of deep generative models, these images show actual samples from the model distributions, not conditional means given samples of hidden units. Moreover, these samples are uncorrelated because the sampling process does not depend on Markov chain mixing. a) MNIST b) TFD c) CIFAR-10 (fully connected model) d) CIFAR-10 (convolutional discriminator and “deconvolutional” generator)",
+        "files": [],
+        "tableHtml": "tables/1406.2661/table-S5.F2.html"
+      },
+      {
+        "paperId": "1406.2661",
+        "id": "S5.F3",
+        "kind": "figure",
+        "caption": "Figure 3: Digits obtained by linearly interpolating between coordinates in \\bm{z} space of the full model.",
+        "files": [
+          "figures/1406.2661/fig-S5.F3-1.png",
+          "figures/1406.2661/fig-S5.F3-2.png"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "1406.2661",
+        "id": "S5.T2",
+        "kind": "table",
+        "caption": "Table 2: Challenges in generative modeling: a summary of the difficulties encountered by different approaches to deep generative modeling for each of the major operations involving a model.",
+        "files": [],
+        "tableHtml": "tables/1406.2661/table-S5.T2.html"
+      }
+    ]
+  },
+  {
+    "paperId": "2005.11401",
+    "label": "RAG",
+    "items": [
+      {
+        "paperId": "2005.11401",
+        "id": "S1.F1",
+        "kind": "figure",
+        "caption": "Figure 1: Overview of our approach. We combine a pre-trained retriever ( Query Encoder + Document Index ) with a pre-trained seq2seq model ( Generator ) and fine-tune end-to-end. For query x , we use Maximum Inner Product Search (MIPS) to find the top-K documents z_{i} . For final prediction y , we treat z as a latent variable and marginalize over seq2seq predictions given different documents.",
+        "files": [
+          "figures/2005.11401/fig-S1.F1-1.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2005.11401",
+        "id": "S4.T2.fig1",
+        "kind": "table",
+        "caption": "Table 1: Open-Domain QA Test Scores. For TQA, left column uses the standard test set for Open- Domain QA, right column uses the TQA-Wiki test set. See Appendix D for further details.",
+        "files": [],
+        "tableHtml": "tables/2005.11401/table-S4.T2.fig1.html"
+      },
+      {
+        "paperId": "2005.11401",
+        "id": "S4.T2.fig2",
+        "kind": "table",
+        "caption": "Table 2: Generation and classification Test Scores. MS-MARCO SotA is [ 4 ] , FEVER-3 is [ 68 ] and FEVER-2 is [ 57 ] *Uses gold context/evidence. Best model without gold access underlined.",
+        "files": [],
+        "tableHtml": "tables/2005.11401/table-S4.T2.fig2.html"
+      },
+      {
+        "paperId": "2005.11401",
+        "id": "S4.F2",
+        "kind": "figure",
+        "caption": "Figure 2: RAG-Token document posterior p(z_{i}|x,y_{i},y_{-i}) for each generated token for input “Hemingway\" for Jeopardy generation with 5 retrieved documents. The posterior for document 1 is high when generating “A Farewell to Arms\" and for document 2 when generating “The Sun Also Rises\".",
+        "files": [
+          "figures/2005.11401/fig-S4.F2-1.png"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2005.11401",
+        "id": "S4.T3",
+        "kind": "table",
+        "caption": "Table 3: Examples from generation tasks. RAG models generate more specific and factually accurate responses. ‘?’ indicates factually incorrect responses, * indicates partially correct responses.",
+        "files": [],
+        "tableHtml": "tables/2005.11401/table-S4.T3.html"
+      },
+      {
+        "paperId": "2005.11401",
+        "id": "S4.T5.fig1",
+        "kind": "table",
+        "caption": "Table 4: Human assessments for the Jeopardy Question Generation Task.",
+        "files": [],
+        "tableHtml": "tables/2005.11401/table-S4.T5.fig1.html"
+      },
+      {
+        "paperId": "2005.11401",
+        "id": "S4.F3",
+        "kind": "figure",
+        "caption": "Figure 3: Left: NQ performance as more documents are retrieved. Center: Retrieval recall performance in NQ. Right: MS-MARCO Bleu-1 and Rouge-L as more documents are retrieved.",
+        "files": [
+          "figures/2005.11401/fig-S4.F3-1.svg"
+        ],
+        "tableHtml": null
+      }
+    ]
+  },
+  {
+    "paperId": "2004.04906",
+    "label": "DPR",
+    "items": [
+      {
+        "paperId": "2004.04906",
+        "id": "S4.T1",
+        "kind": "table",
+        "caption": "Table 1: Number of questions in each QA dataset. The two columns of Train denote the original training examples in the dataset and the actual questions used for training DPR after filtering. See text for more details.",
+        "files": [],
+        "tableHtml": "tables/2004.04906/table-S4.T1.html"
+      },
+      {
+        "paperId": "2004.04906",
+        "id": "S4.T2",
+        "kind": "table",
+        "caption": "Table 2: Top-20 & Top-100 retrieval accuracy on test sets, measured as the percentage of top 20/100 retrieved passages that contain the answer. Single and Multi denote that our Dense Passage Retriever (DPR) was trained using individial or combined training datasets (all the datasets excluding SQuAD). See text for more details.",
+        "files": [],
+        "tableHtml": "tables/2004.04906/table-S4.T2.html"
+      },
+      {
+        "paperId": "2004.04906",
+        "id": "S5.F1",
+        "kind": "figure",
+        "caption": "Figure 1: Retriever top- k accuracy with different numbers of training examples used in our dense passage retriever vs BM25. The results are measured on the development set of Natural Questions. Our DPR trained using 1,000 examples already outperforms BM25.",
+        "files": [
+          "figures/2004.04906/fig-S5.F1-1.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2004.04906",
+        "id": "S5.T3",
+        "kind": "table",
+        "caption": "Table 3: Comparison of different training schemes, measured as top- k retrieval accuracy on Natural Questions (development set). #N: number of negative examples, IB: in-batch training. G.+BM25 (1) and G.+BM25 (2) denote in-batch training with 1 or 2 additional BM25 negatives, which serve as negative passages for all questions in the batch.",
+        "files": [],
+        "tableHtml": "tables/2004.04906/table-S5.T3.html"
+      },
+      {
+        "paperId": "2004.04906",
+        "id": "S5.T4",
+        "kind": "table",
+        "caption": "Table 4: End-to-end QA (Exact Match) Accuracy. The first block of results are copied from their cited papers. REALM {}_{\\textrm{Wiki}} and REALM {}_{\\textrm{News}} are the same model but pretrained on Wikipedia and CC-News, respectively. Single and Multi denote that our Dense Passage Retriever (DPR) is trained using individual or combined training datasets (all except SQuAD). For WQ and TREC in the Multi setting, we fine-tune the reader trained on NQ.",
+        "files": [],
+        "tableHtml": "tables/2004.04906/table-S5.T4.html"
+      }
+    ]
+  },
+  {
+    "paperId": "2002.08909",
+    "label": "REALM",
+    "items": [
+      {
+        "paperId": "2002.08909",
+        "id": "S1.F1",
+        "kind": "figure",
+        "caption": "Figure 1: REALM augments language model pre-training with a neural knowledge retriever that retrieves knowledge from a textual knowledge corpus , \\mathcal{Z} (e.g., all of Wikipedia). Signal from the language modeling objective backpropagates all the way through the retriever, which must consider millions of documents in \\mathcal{Z} —a significant computational challenge that we address.",
+        "files": [
+          "figures/2002.08909/fig-S1.F1-1.png"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2002.08909",
+        "id": "S3.F2",
+        "kind": "figure",
+        "caption": "Figure 2: The overall framework of REALM. Left: Unsupervised pre-training. The knowledge retriever and knowledge-augmented encoder are jointly pre-trained on the unsupervised language modeling task. Right: Supervised fine-tuning. After the parameters of the retriever ( \\theta ) and encoder ( \\phi ) have been pre-trained, they are then fine-tuned on a task of primary interest, using supervised examples.",
+        "files": [
+          "figures/2002.08909/fig-S3.F2-1.png"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2002.08909",
+        "id": "S3.F3",
+        "kind": "figure",
+        "caption": "Figure 3: REALM pre-training with asynchronous MIPS refreshes.",
+        "files": [
+          "figures/2002.08909/fig-S3.F3-1.png"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2002.08909",
+        "id": "S4.T1",
+        "kind": "table",
+        "caption": "Table 1: Test results on Open-QA benchmarks. The number of train/test examples are shown in paretheses below each benchmark. Predictions are evaluated with exact match against any reference answer. Sparse retrieval denotes methods that use sparse features such as TF-IDF and BM25. Our model, REALM, outperforms all existing systems.",
+        "files": [],
+        "tableHtml": "tables/2002.08909/table-S4.T1.html"
+      },
+      {
+        "paperId": "2002.08909",
+        "id": "S4.T2",
+        "kind": "table",
+        "caption": "Table 2: Ablation experiments on NQ’s development set.",
+        "files": [],
+        "tableHtml": "tables/2002.08909/table-S4.T2.html"
+      },
+      {
+        "paperId": "2002.08909",
+        "id": "S4.T3",
+        "kind": "table",
+        "caption": "Table 3: An example where REALM utilizes retrieved documents to better predict masked tokens. It assigns much higher probability (0.129) to the correct term, “ Fermat ”, compared to BERT. (Note that the blank corresponds to 3 BERT wordpieces.)",
+        "files": [],
+        "tableHtml": "tables/2002.08909/table-S4.T3.html"
+      }
+    ]
+  },
+  {
+    "paperId": "2201.11903",
+    "label": "CoT",
+    "items": [
+      {
+        "paperId": "2201.11903",
+        "id": "S0.F1",
+        "kind": "figure",
+        "caption": "Figure 1: Chain-of-thought prompting enables large language models to tackle complex arithmetic, commonsense, and symbolic reasoning tasks. Chain-of-thought reasoning processes are highlighted.",
+        "files": [
+          "figures/2201.11903/fig-S0.F1-1.png"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2201.11903",
+        "id": "S0.F2",
+        "kind": "figure",
+        "caption": "Figure 2: PaLM 540B uses chain-of-thought prompting to achieve new state-of-the-art performance on the GSM8K benchmark of math word problems. Finetuned GPT-3 and prior best are from Cobbe et al. (2021) .",
+        "files": [
+          "figures/2201.11903/fig-S0.F2-1.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2201.11903",
+        "id": "S3.F3",
+        "kind": "figure",
+        "caption": "Figure 3: Examples of \\langle input, chain of thought, output \\rangle triples for arithmetic, commonsense, and symbolic reasoning benchmarks. Chains of thought are highlighted. Full prompts in Appendix G .",
+        "files": [
+          "figures/2201.11903/fig-S3.F3-1.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2201.11903",
+        "id": "S3.F4",
+        "kind": "figure",
+        "caption": "Figure 4: Chain-of-thought prompting enables large language models to solve challenging math problems. Notably, chain-of-thought reasoning is an emergent ability of increasing model scale. Prior best numbers are from Cobbe et al. (2021) for GSM8K, Jie et al. (2022) for SVAMP, and Lan et al. (2021) for MAWPS.",
+        "files": [
+          "figures/2201.11903/fig-S3.F4-1.svg",
+          "figures/2201.11903/fig-S3.F4-2.svg",
+          "figures/2201.11903/fig-S3.F4-3.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2201.11903",
+        "id": "S3.F5",
+        "kind": "figure",
+        "caption": "Figure 5: Ablation study for different variations of prompting using LaMDA 137B and PaLM 540B. Results for other datasets are given in Appendix Table 6 and Table 7 .",
+        "files": [
+          "figures/2201.11903/fig-S3.F5-1.svg"
+        ],
+        "tableHtml": null
+      }
+    ]
+  },
+  {
+    "paperId": "2210.03629",
+    "label": "ReAct",
+    "items": [
+      {
+        "paperId": "2210.03629",
+        "id": "S1.F1",
+        "kind": "figure",
+        "caption": "Figure 1: (1) Comparison of 4 prompting methods, (a) Standard , (b) Chain-of-thought ( CoT , Reason Only), (c) Act -only, and (d) ReAct (Reason+Act), solving a HotpotQA ( Yang et al., 2018 ) question. (2) Comparison of (a) Act -only and (b) ReAct prompting to solve an AlfWorld ( Shridhar et al., 2020b ) game. In both domains, we omit in-context examples in the prompt, and only show task solving trajectories generated by the model (Act, Thought) and the environment (Obs).",
+        "files": [
+          "figures/2210.03629/fig-S1.F1-1.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2210.03629",
+        "id": "S3.T1.fig1",
+        "kind": "table",
+        "caption": "Table 1: PaLM-540B prompting results on HotpotQA and Fever.",
+        "files": [],
+        "tableHtml": "tables/2210.03629/table-S3.T1.fig1.html"
+      },
+      {
+        "paperId": "2210.03629",
+        "id": "S3.T1.fig2",
+        "kind": "figure",
+        "caption": "Figure 2: PaLM-540B prompting results with respect to number of CoT-SC samples used.",
+        "files": [
+          "figures/2210.03629/fig-S3.T1.fig2-1.svg",
+          "figures/2210.03629/fig-S3.T1.fig2-2.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2210.03629",
+        "id": "S3.T2.fig1",
+        "kind": "table",
+        "caption": "Table 2: Types of success and failure modes of ReAct and CoT on HotpotQA, as well as their percentages in randomly selected examples studied by human.",
+        "files": [],
+        "tableHtml": "tables/2210.03629/table-S3.T2.fig1.html"
+      },
+      {
+        "paperId": "2210.03629",
+        "id": "S3.F3",
+        "kind": "figure",
+        "caption": "Figure 3: Scaling results for prompting and finetuning on HotPotQA with ReAct (ours) and baselines.",
+        "files": [
+          "figures/2210.03629/fig-S3.F3-1.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2210.03629",
+        "id": "S4.T4.fig1",
+        "kind": "table",
+        "caption": "Table 3: AlfWorld task-specific success rates (%). BUTLER and BUTLER g results are from Table 4 of Shridhar et al. (2020b) . All methods use greedy decoding, except that BUTLER uses beam search.",
+        "files": [],
+        "tableHtml": "tables/2210.03629/table-S4.T4.fig1.html"
+      },
+      {
+        "paperId": "2210.03629",
+        "id": "S4.T4.fig2",
+        "kind": "table",
+        "caption": "Table 4: Score and success rate (SR) on Webshop. IL/IL+RL taken from Yao et al. (2022) .",
+        "files": [],
+        "tableHtml": "tables/2210.03629/table-S4.T4.fig2.html"
+      }
+    ]
+  },
+  {
+    "paperId": "2203.11171",
+    "label": "Self-Consistency",
+    "items": [
+      {
+        "paperId": "2203.11171",
+        "id": "S1.F1",
+        "kind": "figure",
+        "caption": "Figure 1: The self-consistency method contains three steps: (1) prompt a language model using chain-of-thought (CoT) prompting; (2) replace the “greedy decode” in CoT prompting by sampling from the language model’s decoder to generate a diverse set of reasoning paths; and (3) marginalize out the reasoning paths and aggregate by choosing the most consistent answer in the final answer set.",
+        "files": [
+          "figures/2203.11171/fig-S1.F1-1.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2203.11171",
+        "id": "S2.T1",
+        "kind": "table",
+        "caption": "Table 1: Accuracy comparison of different answer aggregation strategies on PaLM-540B.",
+        "files": [],
+        "tableHtml": "tables/2203.11171/table-S2.T1.html"
+      },
+      {
+        "paperId": "2203.11171",
+        "id": "S3.T2",
+        "kind": "table",
+        "caption": "Table 2: Arithmetic reasoning accuracy by self-consistency compared to chain-of-thought prompting ( Wei et al., 2022 ) . The previous SoTA baselines are obtained from: a : Relevance and LCA operation classifier ( Roy & Roth, 2015 ) , b : Lan et al. (2021) , c : Amini et al. (2019) , d : Pi et al. (2022) , e : GPT-3 175B finetuned with 7.5k examples ( Cobbe et al., 2021 ) , g : GPT-3 175B finetuned plus an additional 175B verifier ( Cobbe et al., 2021 ) . The best performance for each task is shown in bold.",
+        "files": [],
+        "tableHtml": "tables/2203.11171/table-S3.T2.html"
+      },
+      {
+        "paperId": "2203.11171",
+        "id": "S3.T3",
+        "kind": "table",
+        "caption": "Table 3: Commonsense and symbolic reasoning accuracy by self-consistency compared to chain-of-thought prompting ( Wei et al., 2022 ) . The previous SoTA baselines are obtained from: a : DeBERTaV3-large + KEAR ( Xu et al., 2021b ) , b : Chowdhery et al. (2022) , c : UnifiedQA-FT ( Khashabi et al., 2020 ) . The best performance for each task is shown in bold.",
+        "files": [],
+        "tableHtml": "tables/2203.11171/table-S3.T3.html"
+      },
+      {
+        "paperId": "2203.11171",
+        "id": "S3.F2",
+        "kind": "figure",
+        "caption": "Figure 2: Self-consistency (blue) significantly improves accuracy over CoT-prompting with greedy decoding (orange) across arithmetic and commonsense reasoning tasks, over LaMDA-137B. Sampling a higher number of diverse reasoning paths consistently improves reasoning accuracy.",
+        "files": [
+          "figures/2203.11171/fig-S3.F2-1.svg",
+          "figures/2203.11171/fig-S3.F2-2.svg",
+          "figures/2203.11171/fig-S3.F2-3.svg",
+          "figures/2203.11171/fig-S3.F2-4.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2203.11171",
+        "id": "S3.T4",
+        "kind": "table",
+        "caption": "Table 4: Examples where self-consistency helps repair the errors over greedy decode, on PaLM-540B. Two sampled reasoning paths that are consistent with the ground truth are shown.",
+        "files": [],
+        "tableHtml": "tables/2203.11171/table-S3.T4.html"
+      },
+      {
+        "paperId": "2203.11171",
+        "id": "S3.F3",
+        "kind": "figure",
+        "caption": "Figure 3: Self-consistency significantly outperforms sample-and-rank with the same # of samples.",
+        "files": [
+          "figures/2203.11171/fig-S3.F3-1.svg",
+          "figures/2203.11171/fig-S3.F3-2.svg",
+          "figures/2203.11171/fig-S3.F3-3.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2203.11171",
+        "id": "S3.F4",
+        "kind": "figure",
+        "caption": "Figure 4: GSM8K accuracy. (Left) Self-consistency is robust to various sampling strategies and parameters. (Right) Self-consistency improves performance across language model scales.",
+        "files": [
+          "figures/2203.11171/fig-S3.F4-1.svg",
+          "figures/2203.11171/fig-S3.F4-2.svg"
+        ],
+        "tableHtml": null
+      },
+      {
+        "paperId": "2203.11171",
+        "id": "S3.T8.fig2",
+        "kind": "figure",
+        "caption": "Figure 5: The consistency is correlated with model’s accuracy.",
+        "files": [
+          "figures/2203.11171/fig-S3.T8.fig2-1.svg"
+        ],
+        "tableHtml": null
+      }
+    ]
+  }
+]
