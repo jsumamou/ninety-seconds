@@ -17,6 +17,7 @@ import { PaperFigures } from "../components/PaperFigures";
 import { QuizDeck } from "../components/QuizDeck";
 import { getPaperFigures } from "../data/paperFigures";
 import type { Course } from "../data/types";
+import { hasGenerationBackend } from "../lib/backend";
 import {
   getCourse,
   PROGRESS_STEPS,
@@ -37,6 +38,18 @@ export function PaperPage({ paperId }: { paperId: string }) {
   const [genTone, setGenTone] = useState<"standard" | "grandma">("standard");
   const [progressIndex, setProgressIndex] = useState(0);
   const [tab, setTab] = useState<Tab>("course");
+  // 纯静态部署没有生成接口：先探一次，别让按钮变成必然失败的陷阱
+  const [canGenerate, setCanGenerate] = useState(true);
+
+  useEffect(() => {
+    let alive = true;
+    void hasGenerationBackend().then((ok) => {
+      if (alive) setCanGenerate(ok);
+    });
+    return () => {
+      alive = false;
+    };
+  }, []);
 
   useEffect(() => {
     setTab("course");
@@ -203,16 +216,18 @@ export function PaperPage({ paperId }: { paperId: string }) {
               <button
                 type="button"
                 onClick={startGenerate}
-                disabled={genState === "loading"}
+                disabled={genState === "loading" || !canGenerate}
                 aria-busy={genState === "loading"}
                 className="inline-flex items-center gap-2 rounded-full bg-[var(--site-accent)] px-4 py-2 text-sm font-medium text-[var(--site-on-accent)] disabled:cursor-wait disabled:opacity-80"
               >
                 <Sparkles size={14} />
-                {genState === "loading"
-                  ? PROGRESS_STEPS[progressIndex]
-                  : genState === "error"
-                    ? "重试生成"
-                    : `生成 90 秒微课 · ${genTone === "grandma" ? "太奶版" : "标准版"}`}
+                {!canGenerate
+                  ? "生成服务未接入"
+                  : genState === "loading"
+                    ? PROGRESS_STEPS[progressIndex]
+                    : genState === "error"
+                      ? "重试生成"
+                      : `生成 90 秒微课 · ${genTone === "grandma" ? "太奶版" : "标准版"}`}
               </button>
               <a
                 href={paper.sourceUrl}
@@ -230,6 +245,11 @@ export function PaperPage({ paperId }: { paperId: string }) {
                 挑一篇已生成的
               </a>
             </div>
+            {!canGenerate ? (
+              <p className="mt-3 rounded-[var(--site-radius)] bg-[var(--site-surface)] px-3 py-2 text-xs leading-relaxed text-[var(--site-muted)]">
+                线上是纯静态版本，没有接生成服务，所以这篇只能读原文与图表。资料库里 15 篇内置论文都带有提前生成好的课稿，点「挑一篇已生成的」即可直接看。
+              </p>
+            ) : null}
             {genState === "loading" ? (
               <p className="mt-3 text-xs text-[var(--site-muted)]">
                 约需 30–90 秒，请保持页面打开；生成完成后会停在第一幕。

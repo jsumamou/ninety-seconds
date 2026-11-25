@@ -891,9 +891,9 @@ export function ClashPage() {
   const activeTopic = selected?.type === "topic" ? selected.id : null;
 
   return (
-    <div className="mx-auto flex w-full flex-col px-3 pt-4 pb-6 sm:px-5 lg:h-[calc(100dvh-61px)] lg:min-h-[660px] lg:pt-4 lg:pb-4">
+    <div className="mx-auto flex w-full flex-col px-3 pt-4 pb-6 sm:px-5 lg:h-full lg:min-h-0 lg:px-4 lg:pt-3 lg:pb-3">
       {/* 顶部：定位 + 四个统计 */}
-      <header className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
+      <header className="flex shrink-0 flex-wrap items-end justify-between gap-x-6 gap-y-3">
         <div className="min-w-0">
           <p className="text-[10px] font-medium tracking-[0.2em] text-[var(--site-muted)] uppercase">
             Clash · 对照着读
@@ -915,7 +915,7 @@ export function ClashPage() {
       </header>
 
       {/* 上手条：图例 + 一键演示 */}
-      <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 rounded-[var(--site-radius)] border border-[var(--site-border)] bg-[var(--site-bg)]/80 px-3 py-2 text-[11.5px] text-[var(--site-muted)]">
+      <div className="mt-3 flex shrink-0 flex-wrap items-center gap-x-3 gap-y-2 rounded-[var(--site-radius)] border border-[var(--site-border)] bg-[var(--site-bg)]/80 px-3 py-2 text-[11.5px] text-[var(--site-muted)]">
         <span className="rounded-full bg-[var(--site-fg)] px-2 py-0.5 text-[10px] font-semibold text-[var(--site-bg)]">
           90″ 上手
         </span>

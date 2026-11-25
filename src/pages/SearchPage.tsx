@@ -1,15 +1,24 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { ArrowLeft, BookPlus, Check, ExternalLink, LoaderCircle, Search } from "lucide-react";
-import { PAPERS } from "../data/papers";
+import { PAPERS, TOPICS, TOPIC_MAP } from "../data/papers";
 import type { Paper } from "../data/types";
-import { searchArxivPapers } from "../lib/search";
+import { SearchError, searchArxivPapers } from "../lib/search";
+import { toEnglishQuery } from "../lib/query";
 import { useLibrary } from "../lib/store";
 
-// 后端不可达时（纯静态部署、断网），退化成库内 15 篇的关键词检索，
+// 联网失败时（OpenAlex 限流、断网、纯静态部署），退化成库内 15 篇的检索，
 // 保证「搜索」这个入口不会变成一个报错框。
+// 主题名也一起匹配，这样「对齐」「扩散模型」这种词也能落到对应的簇。
 function searchInLibrary(query: string): Paper[] {
   const q = query.trim().toLowerCase();
   if (!q) return [];
+  const tokens = q.split(/[\s,，、/]+/).filter((token) => token.length > 1);
+  const topics = new Set(
+    TOPICS.filter(
+      (topic) => topic.name.toLowerCase().includes(q) || q.includes(topic.name) || topic.note.includes(q),
+    ).map((topic) => topic.id),
+  );
+
   return PAPERS.filter((paper) => {
     const haystack = [
       paper.title,
@@ -17,12 +26,37 @@ function searchInLibrary(query: string): Paper[] {
       paper.abstract,
       paper.abstractZh,
       paper.venue,
-      ...paper.topics,
+      ...paper.topics.map((id) => TOPIC_MAP.get(id)?.name ?? id),
     ]
       .join(" ")
       .toLowerCase();
-    return haystack.includes(q);
+    if (haystack.includes(q)) return true;
+    if (tokens.some((token) => haystack.includes(token))) return true;
+    return paper.topics.some((topic) => topics.has(topic));
   });
+}
+
+/**
+ * 把失败原因说清楚：429 限流和「网络不通」对用户来说是两件完全不同的事，
+ * 之前笼统写成「暂时不可用」，用户会以为是自己没上线/没配置。
+ */
+function describeFailure(caught: unknown, localCount: number): string {
+  const tail =
+    localCount > 0
+      ? `已改为库内检索：命中 ${localCount} 篇（库内共 ${PAPERS.length} 篇）。`
+      : `库内也没有命中（库内共 ${PAPERS.length} 篇），可以点上方主题，或换「大模型」「对齐」「扩散模型」这类词。`;
+
+  if (caught instanceof SearchError) {
+    if (caught.reason === "rate-limit") {
+      return `OpenAlex 限流了（${caught.status ? `HTTP ${caught.status}` : "请求过多"}），已自动重试 ${caught.attempts} 次还没过。这是免费公共接口的常态，等十几秒再点「重试」通常就好了。${tail}`;
+    }
+    if (caught.reason === "network") {
+      return `没连上 api.openalex.org（${caught.message}）——纯静态站点检索是浏览器直连这个接口，当前网络访问不到它。${tail}`;
+    }
+    return `OpenAlex 返回异常（${caught.message}）。${tail}`;
+  }
+
+  return `联网检索失败。${tail}`;
 }
 
 export function SearchPage({ initialQuery }: { initialQuery: string }) {
@@ -33,6 +67,7 @@ export function SearchPage({ initialQuery }: { initialQuery: string }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [batchNote, setBatchNote] = useState<string | null>(null);
+  const [translateNote, setTranslateNote] = useState<string | null>(null);
   const [reloadKey, setReloadKey] = useState(0);
   const requestRef = useRef(0);
 
@@ -50,26 +85,34 @@ export function SearchPage({ initialQuery }: { initialQuery: string }) {
       return;
     }
     const ticket = ++requestRef.current;
+    // 中文关键词在这里换成英文术语；认不出来的保持原样发出去
+    const { query: remoteQuery, translated, matched } = toEnglishQuery(query);
     setLoading(true);
     setError(null);
     setPapers(null);
+    setTranslateNote(
+      translated ? `中文关键词已按「${remoteQuery}」检索（${matched.slice(0, 3).join("、")}）` : null,
+    );
     // 兜底顺序：① 后端（有缓存与限流）→ ② 浏览器直连 OpenAlex 的 arXiv 收录
     // → ③ 库内 15 篇关键词检索。② 是为了纯静态部署（没有 /functions）也能搜。
     const direct = async () => {
       try {
-        const hits = await searchArxivPapers(query, 30);
+        const hits = await searchArxivPapers(remoteQuery, 30);
         if (ticket !== requestRef.current) return;
         setPapers(hits);
-      } catch {
+        if (hits.length === 0) {
+          setError(
+            `OpenAlex 的 arXiv 收录里没有匹配「${remoteQuery}」的论文。换个更具体的词，或点上方主题。`,
+          );
+        }
+      } catch (caught) {
         if (ticket !== requestRef.current) return;
         const local = searchInLibrary(query);
         setPapers(local);
-        setError(
-          `联网检索暂时不可用，已改为库内检索：命中 ${local.length} 篇（库内共 ${PAPERS.length} 篇）。`,
-        );
+        setError(describeFailure(caught, local.length));
       }
     };
-    fetch(`/functions/v1/app?action=search&q=${encodeURIComponent(query)}`)
+    fetch(`/functions/v1/app?action=search&q=${encodeURIComponent(remoteQuery)}`)
       .then(async (response) => {
         const payload = await response.json().catch(() => null);
         if (ticket !== requestRef.current) return;
@@ -78,7 +121,7 @@ export function SearchPage({ initialQuery }: { initialQuery: string }) {
           return;
         }
         const list = Array.isArray(payload.papers) ? (payload.papers as Paper[]) : [];
-        setPapers(list.length > 0 ? list : await searchArxivPapers(query, 30).catch(() => []));
+        setPapers(list.length > 0 ? list : await searchArxivPapers(remoteQuery, 30).catch(() => []));
       })
       .catch(() => {
         void direct();
@@ -92,10 +135,6 @@ export function SearchPage({ initialQuery }: { initialQuery: string }) {
     event?.preventDefault();
     const query = input.trim();
     if (!query) return;
-    if (/[\u4e00-\u9fff]/.test(query)) {
-      setError("英文检索只收英文关键词；中文主题请回资料库用「按主题检索」。");
-      return;
-    }
     if (query === activeQuery) {
       setReloadKey((current) => current + 1);
       return;
@@ -129,13 +168,13 @@ export function SearchPage({ initialQuery }: { initialQuery: string }) {
         资料库
       </a>
       <p className="mt-6 text-[11px] font-medium tracking-[0.22em] text-[var(--site-accent)] uppercase">
-        arXiv · English search
+        arXiv · 中英双语检索
       </p>
       <h1 className="font-display mt-3 text-4xl font-semibold tracking-tight text-[var(--site-fg)]">
         一次搜三十篇，再决定读哪篇
       </h1>
       <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[var(--site-muted)]">
-        输入英文关键词，从 OpenAlex 的 arXiv 收录里按相关性取最相关的三十篇。
+        中文或英文关键词都行，从 OpenAlex 的 arXiv 收录里按相关性取最相关的三十篇。
         <span className="text-[var(--site-fg)]">只收录进资料库，不自动生成微课</span>
         ——想精读哪篇，点进论文页再生成。
       </p>
@@ -153,9 +192,9 @@ export function SearchPage({ initialQuery }: { initialQuery: string }) {
             <input
               value={input}
               onChange={(event) => setInput(event.target.value)}
-              placeholder="retrieval augmented generation"
+              placeholder="大模型对齐 / retrieval augmented generation"
               className="h-11 w-full rounded-full border border-[var(--site-border)] bg-[var(--site-bg)] pr-4 pl-10 text-sm text-[var(--site-fg)] outline-none placeholder:text-[var(--site-muted)]/80 focus:border-[var(--site-accent)]"
-              aria-label="英文关键词"
+              aria-label="检索关键词"
             />
           </div>
           <button
@@ -167,9 +206,16 @@ export function SearchPage({ initialQuery }: { initialQuery: string }) {
           </button>
         </div>
         <p className="mt-3 text-xs text-[var(--site-muted)]">
-          元数据来自 OpenAlex 开放目录的 arXiv 收录，按相关性排序；浏览器直连，无需后端。中文主题请回资料库用「按主题检索」。
+          元数据来自 OpenAlex 开放目录的 arXiv 收录，按相关性排序；浏览器直连，无需后端。
+          中文会自动换成英文检索词（如「扩散模型」→ diffusion model），认不出的词保持原样。
         </p>
       </form>
+
+      {translateNote ? (
+        <p className="mt-3 rounded-md bg-[var(--site-surface)] px-3 py-2 text-xs text-[var(--site-muted)]">
+          {translateNote}
+        </p>
+      ) : null}
 
       {error ? (
         <div

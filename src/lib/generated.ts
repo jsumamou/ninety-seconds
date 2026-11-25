@@ -1,6 +1,7 @@
 import { COURSES } from "../data/courses";
 import { GENERATED_COURSES } from "../data/generatedCourses";
 import type { Course } from "../data/types";
+import { hasGenerationBackend, NO_BACKEND_MESSAGE } from "./backend";
 
 const STORAGE_KEY = "jsm:generated:v1";
 const LIMIT = 20;
@@ -65,6 +66,11 @@ export async function requestCourse(
   paperId: string,
   tone: "standard" | "grandma" = "standard",
 ): Promise<Course> {
+  // 静态部署下没有这个后端，先问清楚，别拿 404 的 HTML 去 json() 然后报「读不懂」
+  if (!(await hasGenerationBackend())) {
+    throw new Error(NO_BACKEND_MESSAGE);
+  }
+
   const toneParam = tone === "grandma" ? "&tone=grandma" : "";
   const first = await fetch(
     `/functions/v1/app?action=course&id=${encodeURIComponent(paperId)}${toneParam}`,
@@ -74,7 +80,7 @@ export async function requestCourse(
   try {
     payload = (await first.json()) as typeof payload;
   } catch {
-    throw new Error("服务返回的内容读不懂，请重试。");
+    throw new Error("生成服务返回了非预期的内容（多半是接口地址不对），请稍后再试。");
   }
   if (first.status === 429) {
     const retryAfter = Number(first.headers.get("Retry-After"));
@@ -107,7 +113,7 @@ export async function requestCourse(
     try {
       resumed = (await response.json()) as typeof payload;
     } catch {
-      throw new Error("服务返回的内容读不懂，请重试。");
+      throw new Error("生成服务返回了非预期的内容（多半是接口地址不对），请稍后再试。");
     }
     if (!response.ok || !resumed.ok) {
       throw new Error(resumed.message || "这次没生成成功，请重试。");

@@ -1,4 +1,5 @@
 import type { Paper } from "../data/types";
+import { toEnglishQuery } from "./query";
 
 export interface SearchHit {
   title: string;
@@ -34,6 +35,70 @@ interface OpenAlexWork {
 const ARXIV_IN_URL = /arxiv\.org\/(?:abs|pdf)\/(\d{4}\.\d{4,5})(v\d+)?/i;
 const ARXIV_IN_DOI = /10\.48550\/arxiv\.(\d{4}\.\d{4,5})(v\d+)?/i;
 
+// OpenAlex 的「polite pool」：带上联系方式后限流阈值高得多。
+// 不带的话，国内家宽/校园网的共享出口 IP 很容易被直接 429。
+const MAILTO = "ninety.seconds@outlook.com";
+
+export type SearchFailReason = "rate-limit" | "network" | "server";
+
+export class SearchError extends Error {
+  reason: SearchFailReason;
+  status?: number;
+  attempts: number;
+
+  constructor(reason: SearchFailReason, message: string, attempts: number, status?: number) {
+    super(message);
+    this.name = "SearchError";
+    this.reason = reason;
+    this.attempts = attempts;
+    this.status = status;
+  }
+}
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+/**
+ * OpenAlex JSON 请求：429 / 5xx / 超时自动退避重试（0.7s → 1.4s）。
+ * 三次都失败才抛错，并带上失败原因，方便界面说清楚到底卡在哪。
+ */
+async function openAlexJson(url: string, timeoutMs: number, attempts = 3): Promise<unknown> {
+  let last: SearchError | null = null;
+
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    if (attempt > 1) await sleep(700 * 2 ** (attempt - 2) + Math.random() * 250);
+
+    try {
+      const response = await fetch(url, {
+        headers: { Accept: "application/json" },
+        signal: AbortSignal.timeout(timeoutMs),
+      });
+
+      if (response.ok) return await response.json();
+
+      if (response.status === 429 || response.status >= 500) {
+        last = new SearchError("rate-limit", `OpenAlex 返回 HTTP ${response.status}`, attempt, response.status);
+        continue;
+      }
+
+      throw new SearchError("server", `OpenAlex 返回 HTTP ${response.status}`, attempt, response.status);
+    } catch (error) {
+      if (error instanceof SearchError) {
+        // 4xx（非 429）没必要重试
+        if (error.reason === "server") throw error;
+        continue;
+      }
+      const timedOut = error instanceof Error && error.name === "TimeoutError";
+      last = new SearchError(
+        "network",
+        timedOut ? "请求 OpenAlex 超时" : "网络没连上 api.openalex.org",
+        attempt,
+      );
+    }
+  }
+
+  throw last ?? new SearchError("network", "检索没连上", attempts);
+}
+
 function versionOf(id: string): number {
   const match = id.match(/v(\d+)$/);
   return match ? Number(match[1]) : 0;
@@ -56,11 +121,10 @@ function collectArxivIds(work: OpenAlexWork): string[] {
   return ids.sort((a, b) => versionOf(b) - versionOf(a));
 }
 
-export async function searchPapers(query: string): Promise<SearchOutcome> {  const url = `https://api.openalex.org/works?search=${encodeURIComponent(query)}&per_page=8`;
+export async function searchPapers(query: string): Promise<SearchOutcome> {
+  const url = `https://api.openalex.org/works?search=${encodeURIComponent(query)}&per_page=8&mailto=${MAILTO}`;
   try {
-    const response = await fetch(url, { signal: AbortSignal.timeout(9000) });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const payload = (await response.json()) as { results?: OpenAlexWork[] };
+    const payload = (await openAlexJson(url, 9000)) as { results?: OpenAlexWork[] };
     const works = Array.isArray(payload.results) ? payload.results : [];
     const hits: SearchHit[] = works.map((work) => {
       const arxivIds = collectArxivIds(work);
@@ -129,18 +193,16 @@ function toPaper(work: OpenAlexWork, id: string): Paper | null {
  * 失败时抛错，由调用方决定是否退化为库内检索。
  */
 export async function searchArxivPapers(query: string, want = 30): Promise<Paper[]> {
+  // 中文关键词先换成英文术语，否则 arXiv 收录里基本搜不到东西
+  const { query: remoteQuery } = toEnglishQuery(query);
+
   const url = new URL("https://api.openalex.org/works");
-  url.searchParams.set("search", query);
+  url.searchParams.set("search", remoteQuery);
   url.searchParams.set("filter", `primary_location.source.id:${ARXIV_SOURCE_ID}`);
   url.searchParams.set("per-page", String(Math.min(Math.max(want, 1), 100)));
+  url.searchParams.set("mailto", MAILTO);
 
-  const response = await fetch(url.toString(), {
-    headers: { Accept: "application/json" },
-    signal: AbortSignal.timeout(15000),
-  });
-  if (!response.ok) throw new Error(`openalex ${response.status}`);
-
-  const payload = (await response.json()) as { results?: OpenAlexWork[] };
+  const payload = (await openAlexJson(url.toString(), 15000)) as { results?: OpenAlexWork[] };
   const works = Array.isArray(payload.results) ? payload.results : [];
   const papers: Paper[] = [];
   const seen = new Set<string>();
@@ -161,11 +223,14 @@ export async function searchArxivPapers(query: string, want = 30): Promise<Paper
 /** 按 arXiv 编号从 OpenAlex 取单篇元数据（无需后端；arXiv 官方 API 不带 CORS）。 */
 export async function fetchArxivPaper(id: string): Promise<Paper | null> {
   const doi = `https://doi.org/10.48550/arxiv.${id}`;
-  const response = await fetch(`https://api.openalex.org/works/${encodeURIComponent(doi)}`, {
-    headers: { Accept: "application/json" },
-    signal: AbortSignal.timeout(12000),
-  });
-  if (!response.ok) return null;
-  const work = (await response.json()) as OpenAlexWork;
-  return toPaper(work, id);
+  try {
+    const work = (await openAlexJson(
+      `https://api.openalex.org/works/${encodeURIComponent(doi)}?mailto=${MAILTO}`,
+      12000,
+      2,
+    )) as OpenAlexWork;
+    return toPaper(work, id);
+  } catch {
+    return null;
+  }
 }

@@ -178,8 +178,15 @@ function Shell() {
     );
   }
 
+  // 星图页是「一屏仪表盘」：桌面端锁死视口高度、不出页脚，避免整体被往下推
+  const fullBleed = route.name === "clash";
+
   return (
-    <div className="flex min-h-dvh flex-col bg-[var(--site-bg)] text-[var(--site-fg)]">
+    <div
+      className={`flex flex-col bg-[var(--site-bg)] text-[var(--site-fg)] ${
+        fullBleed ? "min-h-dvh lg:h-dvh lg:overflow-hidden" : "min-h-dvh"
+      }`}
+    >
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:rounded focus:bg-[var(--site-bg)] focus:px-3 focus:py-2 focus:text-sm"
@@ -187,7 +194,7 @@ function Shell() {
         跳到正文
       </a>
       <Header route={route} />
-      <main id="main" className="flex-1">
+      <main id="main" className={fullBleed ? "min-h-0 flex-1" : "flex-1"}>
         {route.name === "library" ? <Library /> : null}
         {route.name === "paper" ? <PaperPage paperId={route.id} /> : null}
         {route.name === "review" ? <ReviewPage /> : null}
@@ -197,7 +204,11 @@ function Shell() {
         {route.name === "feed" ? <FeedPage /> : null}
       </main>
       {route.name === "feed" ? null : (
-        <footer className="border-t border-[var(--site-border)]">
+        <footer
+          className={`border-t border-[var(--site-border)] ${
+            fullBleed ? "lg:hidden" : ""
+          }`}
+        >
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-5 py-6 text-xs text-[var(--site-muted)] sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <div className="min-w-0">
             <p>九十秒 · 把论文拆成可以复述的小块。</p>
