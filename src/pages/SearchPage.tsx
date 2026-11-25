@@ -112,7 +112,9 @@ export function SearchPage({ initialQuery }: { initialQuery: string }) {
         setError(describeFailure(caught, local.length));
       }
     };
-    fetch(`/functions/v1/app?action=search&q=${encodeURIComponent(remoteQuery)}`)
+    fetch(`/functions/v1/app?action=search&q=${encodeURIComponent(remoteQuery)}`, {
+      signal: AbortSignal.timeout(18_000),
+    })
       .then(async (response) => {
         const payload = await response.json().catch(() => null);
         if (ticket !== requestRef.current) return;

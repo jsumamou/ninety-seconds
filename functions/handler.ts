@@ -347,7 +347,7 @@ async function generateCourse(
     : { errors: ["输出不是合法 JSON 对象"] };
   let issues = check.course ? languageIssues(check.course) : [];
 
-  for (let retry = 0; retry < 2 && (!check.course || issues.length > 0); retry++) {
+  for (let retry = 0; retry < 4 && (!check.course || issues.length > 0); retry++) {
     const problems = issues.length > 0 ? issues : check.errors;
     try {
       attempt = await callModel(buildRetryPrompt(base, problems, attempt.text));
@@ -718,7 +718,7 @@ export async function handler(request: Request): Promise<Response> {
           ? validateCourse(parsed, courseId)
           : { errors: ["输出不是合法 JSON 对象"] };
         let issues = check.course ? languageIssues(check.course) : [];
-        if ((!check.course || issues.length > 0) && polled.userMessages < 3) {
+        if ((!check.course || issues.length > 0) && polled.userMessages < 6) {
           const paper = await fetchArxiv(courseId);
           if (paper) {
             try {

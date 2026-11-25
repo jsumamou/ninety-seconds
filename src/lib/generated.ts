@@ -103,7 +103,7 @@ export async function requestCourse(
   }
 
   const sessionId = payload.sessionId;
-  const deadline = Date.now() + 240_000;
+  const deadline = Date.now() + 360_000;
   while (Date.now() < deadline) {
     const response = await fetch(
       `/functions/v1/app?action=course&id=${encodeURIComponent(paperId)}&resume=${encodeURIComponent(sessionId)}${toneParam}`,
