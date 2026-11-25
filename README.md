@@ -4,6 +4,8 @@
 
 线上站点：https://ninety-seconds.app.workbuddy.host/?sharecode=SBW6HOROFI （公开演示）
 
+> 本项目为参赛原创作品：可浏览、可 fork 学习，但不得复制后另投比赛或 1:1 复刻，详见 [LICENSE](LICENSE)。
+
 ## 演示路径
 
 1. 进「论文对撞」（`#/clash`）——十五颗星球、五个主题簇；灰线是引用延伸，红线是六对最容易搞混的论文。点任意一颗星球看右侧详情。

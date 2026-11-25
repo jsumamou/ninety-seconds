@@ -16,7 +16,9 @@ import { MicroCourse } from "../components/MicroCourse";
 import { PaperFigures } from "../components/PaperFigures";
 import { QuizDeck } from "../components/QuizDeck";
 import { getPaperFigures } from "../data/paperFigures";
-import type { Course } from "../data/types";
+import { ORIGINAL_ABSTRACTS } from "../data/originalAbstracts";
+import { ORIGINAL_CONCLUSIONS } from "../data/originalConclusions";
+import type { Course, Paper } from "../data/types";
 import { hasGenerationBackend } from "../lib/backend";
 import {
   getCourse,
@@ -27,6 +29,47 @@ import {
 import { topicLabel, useLibrary } from "../lib/store";
 
 type Tab = "course" | "diagram" | "quiz" | "figures";
+
+function AbstractBlock({ paper }: { paper: Paper }) {
+  const text = (ORIGINAL_ABSTRACTS[paper.id] ?? paper.abstract ?? "").trim();
+  return (
+    <section className="rounded-[var(--site-radius)] border border-[var(--site-border)] bg-[var(--site-bg)] p-5">
+      <p className="text-xs font-semibold tracking-[0.16em] text-[var(--site-muted)] uppercase">
+        原文摘要 · Abstract
+      </p>
+      {text ? (
+        <p className="mt-3 text-[15px] leading-relaxed text-[var(--site-fg)]">{text}</p>
+      ) : (
+        <p className="mt-3 text-sm leading-relaxed text-[var(--site-muted)]">
+          这篇的原文摘要暂时取不到，可点右上「读原文」查看。
+        </p>
+      )}
+    </section>
+  );
+}
+
+function ConclusionBlock({ paper }: { paper: Paper }) {
+  const entry = ORIGINAL_CONCLUSIONS[paper.id];
+  const text = (entry?.text ?? "").trim();
+  const label =
+    entry?.source === "fallback"
+      ? `原文结尾章节 · ${entry.heading}`
+      : "原文结论 · Conclusion";
+  return (
+    <section className="rounded-[var(--site-radius)] border border-[var(--site-border)] bg-[var(--site-bg)] p-5">
+      <p className="text-xs font-semibold tracking-[0.16em] text-[var(--site-muted)] uppercase">
+        {label}
+      </p>
+      {text ? (
+        <p className="mt-3 text-[15px] leading-relaxed text-[var(--site-fg)]">{text}</p>
+      ) : (
+        <p className="mt-3 text-sm leading-relaxed text-[var(--site-muted)]">
+          这篇的原文结论暂时取不到，可点右上「读原文」查看。
+        </p>
+      )}
+    </section>
+  );
+}
 
 export function PaperPage({ paperId }: { paperId: string }) {
   const { library, answers } = useLibrary();
@@ -177,8 +220,9 @@ export function PaperPage({ paperId }: { paperId: string }) {
             <p className="mt-3 text-sm leading-relaxed text-[var(--site-muted)]">
               生成时会读取摘要，拆成 6 个场景并配好板书、图解与自测卡；结果保存在本机，刷新后仍在。
             </p>
-            <div className="mt-5 rounded-[var(--site-radius)] bg-[var(--site-surface)] p-4 text-sm leading-relaxed text-[var(--site-fg)]">
-              {paper.abstractZh}
+            <div className="mt-5 space-y-5">
+              <AbstractBlock paper={paper} />
+              <ConclusionBlock paper={paper} />
             </div>
             <div className="mt-5 flex flex-wrap items-center gap-2">
               <div
@@ -339,7 +383,13 @@ export function PaperPage({ paperId }: { paperId: string }) {
                     }}
                   />
                 ) : null}
-                {tab === "figures" ? <PaperFigures paperId={course.paperId} /> : null}
+                {tab === "figures" ? (
+                  <div className="space-y-6">
+                    <AbstractBlock paper={paper} />
+                    <ConclusionBlock paper={paper} />
+                    <PaperFigures paperId={course.paperId} />
+                  </div>
+                ) : null}
               </div>
             </div>
 

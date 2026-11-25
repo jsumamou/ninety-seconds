@@ -150,7 +150,7 @@ export async function searchPapers(query: string): Promise<SearchOutcome> {
 // 就能在没有后端（纯静态部署）的情况下直接在浏览器里检索。
 
 const ARXIV_SOURCE_ID = "S4306400194";
-const ABSTRACT_LIMIT = 900;
+const ABSTRACT_LIMIT = 4000;
 
 function abstractFromIndex(index?: Record<string, number[]> | null): string {
   if (!index || typeof index !== "object") return "";
